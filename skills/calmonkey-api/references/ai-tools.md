@@ -301,6 +301,7 @@ Everyone in the organization sees its connected tools under [AI clients](https:/
 | `read_events` | Read the events of an account's calendars in a time window, with their details. | No |
 | `read_free_busy` | Read when an account's calendars are busy in a time window: one period per event with its start, end and busy / tentative / free status. | No |
 | `upsert_event` | Write an event to a calendar under your own event_id: creates it, or replaces the event this application wrote earlier under the same id (the whole event: a field left out is cleared, except the guest list, which stays as it is unless \`attendees\` is sent). | Yes, confirmed first where it matters |
+| `edit_event` | Change the named fields of an event this application wrote and leave every other field as it is (read, merge, write: nothing is cleared by leaving it out). | Yes, confirmed first where it matters |
 | `delete_event` | Delete an event this application wrote, by the event_id it was written with (or one occurrence of a repeating event with occurrence_date). | Yes, confirmed first where it matters |
 | `read_request_log` | Read an application's request log, newest first: every authenticated API request it made and every tool call an AI client made on it (marked as such, with the client's name), with status, duration and the redacted bodies. | No |
 | `read_webhook_deliveries` | Read the notifications CalMonkey sent (or is still trying to send) to an application's webhook channels, newest first: type, where it went, how many attempts, the receiver's last answer and when the next attempt is due. | No |
@@ -316,6 +317,8 @@ Three kinds of call are never carried out straight away:
 - writing an event in a way that makes the calendar email its guests (an event with `attendees`, unless `notify_attendees` is `false`), or deleting one that has guests.
 
 The first call changes nothing. It answers with what the call would do, in plain words. Where your tool can put a question to you (MCP elicitation), you are asked and your answer decides. Otherwise the answer has `status: "confirmation_required"` and a `confirmation_token`, and the call is carried out when it is sent again with `confirm: true` and that token. The token works once, for ten minutes, and only for exactly the arguments that were described.
+
+Some tools say they can ask but answer every question by themselves when no person is watching (an agent run without a terminal declines it). Then the call answers that it was declined and changed nothing. If you agree in the conversation, the agent sends the call again with `confirm: true` and no token: your tool is not asked again, the answer describes the call and carries a `confirmation_token`, and the call is carried out when it comes once more with that token.
 
 The command line tool goes by the same rule, decided by the same server code. It prints `NOT DONE: confirmation needed` with what would happen and the exact command to run once you have agreed, and exits with code 10. No flag skips it.
 

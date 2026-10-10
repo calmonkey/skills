@@ -1,0 +1,21 @@
+{
+  "name": "calmonkey-skills",
+  "private": true,
+  "description": "Agent Skills for the CalMonkey calendar API, generated from the documentation at calmonkey.com.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "lint": "node tools/lint.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test \"test/*.test.ts\""
+  },
+  "devDependencies": {
+    "@types/node": "^24",
+    "ajv": "^8.20.0",
+    "typescript": "^6.0.3",
+    "yaml": "^2.9.1"
+  }
+}

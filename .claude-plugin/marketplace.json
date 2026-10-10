@@ -1,0 +1,15 @@
+{
+  "name": "calmonkey",
+  "description": "Skills and the MCP server for the CalMonkey calendar API.",
+  "owner": {
+    "name": "CalMonkey",
+    "url": "https://calmonkey.com"
+  },
+  "plugins": [
+    {
+      "name": "calmonkey",
+      "source": "./",
+      "description": "Build calendar sync, free/busy and booking features on the CalMonkey API (Google Calendar, Microsoft 365, Outlook.com, Apple iCloud): two skills and the CalMonkey MCP server."
+    }
+  ]
+}

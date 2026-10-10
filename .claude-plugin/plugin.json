@@ -1,0 +1,12 @@
+{
+  "name": "calmonkey",
+  "description": "Build calendar sync, free/busy and booking features on the CalMonkey API (Google Calendar, Microsoft 365, Outlook.com, Apple iCloud): two skills and the CalMonkey MCP server.",
+  "author": {
+    "name": "CalMonkey",
+    "url": "https://calmonkey.com"
+  },
+  "homepage": "https://calmonkey.com/docs/ai",
+  "repository": "https://github.com/calmonkey/skills",
+  "license": "MIT",
+  "keywords": ["calendar", "calendar-sync", "google-calendar", "microsoft-365", "outlook", "icloud", "free-busy", "scheduling", "booking", "webhooks"]
+}
